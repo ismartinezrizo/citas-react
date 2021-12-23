@@ -1,0 +1,8 @@
+props: los props se pasan desde el padre al hijo, si tienes un hook(state) que se va a pasar de diferentes componentes, 
+lo mejor es colocarlo en el archivo principal.(App)
+
+siempre que vaya a pasar por mas de un componente es mejor registrarlo en el componente principal(App)
+
+cada nivel de componente debera tomar y pasar el prop hacia otros componentes, tecnologias como redux o context evitan tener que hacerlo de esta
+manera	
+
