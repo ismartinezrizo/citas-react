@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 
 import Error from './Error';
 
-const Formulario = ({pacientes, setPacientes, paciente}) => {
+const Formulario = ({pacientes, setPacientes, paciente, setPaciente}) => {
   
     // HOOKS
     const [nombre, setNombre] = useState('');
@@ -46,19 +46,34 @@ const Formulario = ({pacientes, setPacientes, paciente}) => {
         }
 
         // CONSTRUIMOS EL OBJETO
-        const objetoPacientes = {
+        const objetoPaciente = {
             nombre,
             propietario,
             email,
             alta,
-            sintomas,
-            id: generarId()
+            sintomas            
         };
 
-        // MODIFICAMOS EL VALOR DE PACIENTES CON EL NUEVO VALOR - SETPACIENTES VIENE DE APP
-        // [...COPIA, Y AGREGA EL NUEVO ARRAY]
-        setPacientes([...pacientes, objetoPacientes]);
+        // SI EXISTE EN PACIENTE EL ID EDITAR
+        if(paciente.id){
+        //    EDITANDO EL REGISTRO
+            objetoPaciente.id = paciente.id;
+            // recorremos los pacientes, verificamos si el id es igual al id paciente, retornamos el objetoPaciente sino retornamos el item de pacientes
+            const pacientesActualizados = pacientes.map( item => item.id === paciente.id ? objetoPaciente : item ); 
+            // actualizamos los pacientes, le pasamos el paciente actual
+            setPacientes(pacientesActualizados);
 
+            // regresamos a un objeto vacio para no almacenarlo en memoria
+            setPaciente({});
+
+        }else{
+            // NUEVO REGISTRO
+            objetoPaciente.id = generarId(); //genera el id
+            // MODIFICAMOS EL VALOR DE PACIENTES CON EL NUEVO VALOR - SETPACIENTES VIENE DE APP
+            // [...COPIA, Y AGREGA EL NUEVO ARRAY]
+            setPacientes([...pacientes, objetoPaciente]);
+        }
+    
         // REINICIA EL FORMULARIOS
         setNombre('');
         setPropietario('');

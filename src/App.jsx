@@ -20,6 +20,7 @@ function App() {
           pacientes={pacientes}
           setPacientes={setPacientes}
           paciente={paciente} //este paciente se usa para editar, cuando damos en editar este se llena
+          setPaciente={setPaciente}
         />
         <ListadoPacientes
           pacientes={pacientes}
