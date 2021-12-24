@@ -7,7 +7,7 @@ const Paciente = ({paciente, setPaciente}) => {
         <div className="bg-white p-5 rounded-md mb-3 m-5 paciente">           
             <p className="font-bold uppercase">Nombre: <span className="font-normal capitalize">{nombre}</span></p>
             <p className="font-bold uppercase">Propietario: <span className="font-normal capitalize">{propietario}</span></p>
-            <p className="font-bold uppercase">Email: <span className="font-normal capitalize">{email}</span></p>
+            <p className="font-bold">EMAIL: <span className="font-normal">{email}</span></p>
             <p className="font-bold uppercase">Alta: <span className="font-normal capitalize">{alta}</span></p>
             <p className="font-bold uppercase">Sintomas: <span className="font-normal capitalize">{sintomas}</span></p>           
             <div className="flex justify-between">
